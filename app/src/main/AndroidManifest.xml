@@ -29,7 +29,9 @@
 
         <activity android:name=".step.ActivityStep" />
         <activity android:name=".jni.ActivityJniTest" />
-        <activity android:name=".kotlin.ActivityKotlinTest"></activity>
+        <activity
+            android:name=".kotlin.ActivityKotlinTest"
+            android:theme="@style/AppNoActionBar" />
     </application>
 
 </manifest>

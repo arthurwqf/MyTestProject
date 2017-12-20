@@ -8,6 +8,12 @@
     tools:context="com.qingfeng.mytest.MainActivity">
 
     <Button
+        android:id="@+id/btn6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Kotlin" />
+
+    <Button
         android:id="@+id/btn5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -30,6 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="全景图片" />
+
     <Button
         android:id="@+id/btn4"
         android:layout_width="match_parent"
