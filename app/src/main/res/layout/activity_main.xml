@@ -8,6 +8,12 @@
     tools:context="com.qingfeng.mytest.MainActivity">
 
     <Button
+        android:id="@+id/btn5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="JNI" />
+
+    <Button
         android:id="@+id/btn3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

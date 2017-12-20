@@ -27,7 +27,9 @@
             android:exported="true"
             android:process=":step" />
 
-        <activity android:name=".step.ActivityStep"></activity>
+        <activity android:name=".step.ActivityStep" />
+        <activity android:name=".jni.ActivityJniTest" />
+        <activity android:name=".kotlin.ActivityKotlinTest"></activity>
     </application>
 
 </manifest>

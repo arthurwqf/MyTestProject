@@ -18,6 +18,9 @@ import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
 
+/**
+ * 计步
+ */
 public class ActivityStep extends AppCompatActivity {
     private TextView mtvStepCount;
     private IMyStepInterface myStepManager;
