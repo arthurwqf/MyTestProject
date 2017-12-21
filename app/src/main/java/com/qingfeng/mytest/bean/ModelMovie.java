@@ -14,10 +14,11 @@ import com.qingfeng.mytest.BR;
 
 public class ModelMovie extends BaseObservable {
     int id;
-    String title; //英文名
+    String title; //
     String original_title; //原名
     String aka; //别名
     ModelRating rating;
+    ModelImage images;
 
     public int getId() {
         return id;
@@ -53,16 +54,27 @@ public class ModelMovie extends BaseObservable {
         this.aka = aka;
     }
 
+    @Bindable
     public ModelRating getRating() {
         return rating;
     }
 
     public void setRating(ModelRating rating) {
         this.rating = rating;
+        notifyPropertyChanged(BR.rating);
+    }
+
+    @Bindable
+    public ModelImage getImages() {
+        return images;
+    }
+
+    public void setImages(ModelImage images) {
+        this.images = images;
     }
 
     @BindingAdapter("showImage")
-    public void showImage(ImageView imageView, String img) {
+    public static void showImage(ImageView imageView, String img) {
         Glide.with(imageView.getContext())
                 .load(img)
                 .into(imageView);

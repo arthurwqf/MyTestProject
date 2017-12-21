@@ -38,7 +38,7 @@ Java_com_qingfeng_mytest_jni_JniMethod_encodeData(JNIEnv *env, jclass type, jstr
     string msgC;
     msgC.assign(text);
 
-    string returnValue = encode("Wx", msgC);
+    string returnValue = msgC;
 
     env->ReleaseStringUTFChars(text_, text);
 
