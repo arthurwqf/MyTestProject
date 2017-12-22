@@ -3,9 +3,15 @@ package com.qingfeng.mytest.bean;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 import android.databinding.BindingAdapter;
+import android.util.Log;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 import com.qingfeng.mytest.BR;
 
 /**
@@ -74,9 +80,32 @@ public class ModelMovie extends BaseObservable {
     }
 
     @BindingAdapter("showImage")
-    public static void showImage(ImageView imageView, String img) {
+    public static void showImage(final ImageView imageView, String img) {
+
         Glide.with(imageView.getContext())
                 .load(img)
+                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                .listener(new RequestListener<String, GlideDrawable>() {
+                    @Override
+                    public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+                        if (imageView.getScaleType() != ImageView.ScaleType.FIT_XY) {
+                            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+                        }
+                        ViewGroup.LayoutParams params = imageView.getLayoutParams();
+                        int viewW = imageView.getWidth() - imageView.getPaddingLeft() - imageView.getPaddingRight();
+                        float scale = (float) viewW / (float) resource.getIntrinsicWidth();
+                        int viewH = Math.round(resource.getIntrinsicHeight() * scale);
+                        params.height = viewH + imageView.getPaddingTop() + imageView.getPaddingBottom();
+                        Log.d("test", "onResourceReady: " + params.height);
+                        imageView.setLayoutParams(params);
+                        return false;
+                    }
+                })
                 .into(imageView);
     }
 }

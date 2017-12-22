@@ -1,10 +1,11 @@
 package com.qingfeng.mytest.kotlin
 
 import android.graphics.Color
+import android.graphics.drawable.Animatable
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.StaggeredGridLayoutManager
 import android.util.Log
-import android.view.MenuItem
+import android.view.Menu
 import android.view.View
 import android.view.WindowManager
 import android.widget.FrameLayout
@@ -21,10 +22,6 @@ import kotlinx.android.synthetic.main.activity_kotlin_test.*
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import android.graphics.PorterDuff
-import android.support.v4.content.ContextCompat
-import android.graphics.drawable.Drawable
-
 
 
 class ActivityKotlinTest : RxAppCompatActivity() {
@@ -59,14 +56,19 @@ class ActivityKotlinTest : RxAppCompatActivity() {
         toolbar.title = "Movie"
         ctl_move.setCollapsedTitleTextColor(Color.WHITE)
         ctl_move.setExpandedTitleColor(Color.WHITE)
-        mAdapter = CommonRecyclerViewAdapter(mContext, mData, R.layout.item_movie, BR.movie)
-        rv_move.layoutManager = LinearLayoutManager(mContext)
+        mAdapter = CommonRecyclerViewAdapter(mContext, mData, R.layout.item_movie_waterfall, BR.movie_waterfall)
+        rv_move.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         rv_move.adapter = mAdapter
         toolbar.setNavigationOnClickListener({
             onBackPressed()
         })
 
         getData()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_kotlin, menu)
+        return true
     }
 
     /**

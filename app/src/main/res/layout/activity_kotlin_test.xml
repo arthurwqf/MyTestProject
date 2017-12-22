@@ -10,31 +10,33 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/ctl_move"
             android:layout_width="match_parent"
             android:layout_height="200dp"
+            app:collapsedTitleGravity="start"
             app:contentScrim="@color/colorPrimary"
             app:expandedTitleMarginEnd="60dp"
             app:expandedTitleMarginStart="10dp"
-            app:collapsedTitleGravity="start"
             app:layout_scrollFlags="scroll|snap|exitUntilCollapsed">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="centerCrop"
                 android:fitsSystemWindows="true"
+                android:scaleType="centerCrop"
                 android:src="@drawable/bg0" />
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
+                android:theme="@style/MyToolbar"
+                app:contentInsetStartWithNavigation="0dp"
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/AppTheme.PopupOverlay"
-                app:titleTextColor="@android:color/white"
-                app:contentInsetLeft="0dp" />
+                app:titleTextColor="@android:color/white" />
 
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
