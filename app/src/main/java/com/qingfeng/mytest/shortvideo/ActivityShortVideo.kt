@@ -3,13 +3,33 @@ package com.qingfeng.mytest.shortvideo
 import android.Manifest
 import android.content.DialogInterface
 import android.content.pm.PackageManager
+import android.hardware.Camera
 import android.os.Build
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
+import android.view.SurfaceHolder
 import com.qingfeng.mytest.R
+import kotlinx.android.synthetic.main.activity_short_video.*
 
 class ActivityShortVideo : AppCompatActivity() {
+
+    private lateinit var mCamera:Camera
+
+    private var mCallBack = object : SurfaceHolder.Callback{
+        override fun surfaceChanged(holder: SurfaceHolder?, format: Int, width: Int, height: Int) {
+            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        }
+
+        override fun surfaceDestroyed(holder: SurfaceHolder?) {
+            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        }
+
+        override fun surfaceCreated(holder: SurfaceHolder?) {
+            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        }
+
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,12 +44,20 @@ class ActivityShortVideo : AppCompatActivity() {
             }
         } else {
             TODO("VERSION.SDK_INT < M")
-            initCamera()
+            initBase()
         }
     }
 
-    private fun initCamera() {
+    private fun initBase() {
+        surface_view.holder.setFixedSize(320,280)
+        surface_view.holder.setKeepScreenOn(true)
+        surface_view.holder.addCallback(mCallBack)
+    }
 
+    private fun initCamera(){
+        if (mCamera!=null){
+            mCamera.
+        }
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
@@ -37,7 +65,7 @@ class ActivityShortVideo : AppCompatActivity() {
         if (requestCode == 0) {
             var result = grantResults[0]
             if (result == PackageManager.PERMISSION_GRANTED) {
-                initCamera()
+                initBase()
             } else {
                 AlertDialog.Builder(this)
                         .setTitle("提示")
@@ -54,6 +82,12 @@ class ActivityShortVideo : AppCompatActivity() {
                         .create()
                         .show()
             }
+        }
+    }
+
+    private fun stopCamera(){
+        if (mCamera!=null){
+            mCamera
         }
     }
 }
