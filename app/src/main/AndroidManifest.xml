@@ -3,6 +3,7 @@
     package="com.qingfeng.mytest">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -38,7 +39,8 @@
             android:name=".kotlin.ScrollingActivity"
             android:label="@string/title_activity_scrolling"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".svg.ActivitySvg"></activity>
+        <activity android:name=".svg.ActivitySvg" />
+        <activity android:name=".shortvideo.ActivityShortVideo"></activity>
     </application>
 
 </manifest>

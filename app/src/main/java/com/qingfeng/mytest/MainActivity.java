@@ -9,6 +9,7 @@ import android.view.View;
 import com.qingfeng.mytest.jni.ActivityJniTest;
 import com.qingfeng.mytest.kotlin.ActivityKotlinTest;
 import com.qingfeng.mytest.panorama.ActivityPanorama;
+import com.qingfeng.mytest.shortvideo.ActivityShortVideo;
 import com.qingfeng.mytest.step.ActivityStep;
 import com.qingfeng.mytest.svg.ActivitySvg;
 
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.btn5).setOnClickListener(this);
         findViewById(R.id.btn6).setOnClickListener(this);
         findViewById(R.id.btn7).setOnClickListener(this);
+        findViewById(R.id.btn8).setOnClickListener(this);
     }
 
 
@@ -55,6 +57,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn7:
                 startAc(ActivitySvg.class);
+                break;
+            case R.id.btn8:
+                startAc(ActivityShortVideo.class);
                 break;
         }
     }
