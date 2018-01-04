@@ -6,7 +6,6 @@ import android.app.Activity
 import android.app.Dialog
 import android.app.DialogFragment
 import android.content.Context
-import android.content.DialogInterface
 import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.graphics.Matrix
@@ -14,19 +13,14 @@ import android.graphics.RectF
 import android.graphics.SurfaceTexture
 import android.hardware.camera2.*
 import android.media.MediaRecorder
-import android.os.Build
-import android.os.Bundle
-import android.os.Handler
-import android.os.HandlerThread
+import android.os.*
 import android.support.v4.app.ActivityCompat
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.util.Size
 import android.util.SparseIntArray
-import android.view.Surface
-import android.view.TextureView
-import android.view.View
+import android.view.*
 import android.widget.Toast
 import com.qingfeng.mytest.R
 import kotlinx.android.synthetic.main.activity_short_video.*
@@ -56,7 +50,9 @@ class ActivityShortVideo : AppCompatActivity(), View.OnClickListener {
         private val INVERSE_ORIENTATIONS = SparseIntArray()
         private val SENSOR_ORIENTATION_DEFAULT_DEGREES = 90
         private val SENSOR_ORIENTATION_INVERSE_DEGREES = 270
-        private val VIDEO_PERMISSIONS = arrayOf(Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO)
+        private val VIDEO_PERMISSIONS = arrayOf(Manifest.permission.CAMERA,
+                Manifest.permission.RECORD_AUDIO,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE)
 
         init {
             DEFAULT_ORIENTATIONS.append(Surface.ROTATION_0, 90)
@@ -141,6 +137,9 @@ class ActivityShortVideo : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mContext = this
+        //设置全屏
+        requestWindowFeature(Window.FEATURE_NO_TITLE)
+        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setContentView(R.layout.activity_short_video)
         init()
     }
@@ -308,6 +307,8 @@ class ActivityShortVideo : AppCompatActivity(), View.OnClickListener {
                 updatePreview()
                 (mContext as Activity).runOnUiThread({
                     mIsRecordingVideo = true
+                    ic_record_control.setImageResource(android.R.drawable.ic_media_pause)
+                    record_time.start()
                     //开始录像
                     mMediaRecorder?.start()
                 })
@@ -324,12 +325,20 @@ class ActivityShortVideo : AppCompatActivity(), View.OnClickListener {
      */
     private fun stopRecordingVideo() {
         mIsRecordingVideo = false
+        ic_record_control.setImageResource(android.R.drawable.ic_media_play)
+        record_time.stop()
+        record_time.base = SystemClock.elapsedRealtime()
+
+        //必须将这一句放到MediaRecorder释放前
+        //否则会造成，接收数据方（Encoder）已经停止了，而发送数据的session还在运行
+        startPreview()
+
+        //stop recording
         mMediaRecorder?.stop()
         mMediaRecorder?.reset()
 
         Toast.makeText(mContext, "视频保存到了" + mNextVideoAbsolutePath, Toast.LENGTH_SHORT).show()
         mNextVideoAbsolutePath = null
-        startPreview()
     }
 
     /**
@@ -365,24 +374,28 @@ class ActivityShortVideo : AppCompatActivity(), View.OnClickListener {
         if (null == mCameraDevice || !texture_view.isAvailable || null == mPreviewSize) {
             return
         }
-        closePreviewSession()
-        val texture = texture_view.surfaceTexture
-        texture.setDefaultBufferSize(mPreviewSize!!.width, mPreviewSize!!.height)
-        mPreviewBuilder = mCameraDevice!!.createCaptureRequest(CameraDevice.TEMPLATE_PREVIEW)
+        try {
+            closePreviewSession()
+            val texture = texture_view.surfaceTexture
+            texture.setDefaultBufferSize(mPreviewSize!!.width, mPreviewSize!!.height)
+            mPreviewBuilder = mCameraDevice!!.createCaptureRequest(CameraDevice.TEMPLATE_PREVIEW)
 
-        val previewSurface = Surface(texture)
-        mPreviewBuilder?.addTarget(previewSurface)
+            val previewSurface = Surface(texture)
+            mPreviewBuilder?.addTarget(previewSurface)
 
-        mCameraDevice!!.createCaptureSession(Arrays.asList(previewSurface), object : CameraCaptureSession.StateCallback() {
-            override fun onConfigured(session: CameraCaptureSession?) {
-                mPreviewSession = session
-                updatePreview()
-            }
+            mCameraDevice!!.createCaptureSession(Arrays.asList(previewSurface), object : CameraCaptureSession.StateCallback() {
+                override fun onConfigured(session: CameraCaptureSession?) {
+                    mPreviewSession = session
+                    updatePreview()
+                }
 
-            override fun onConfigureFailed(session: CameraCaptureSession?) {
-                Toast.makeText(mContext, "onConfigureFailed", Toast.LENGTH_SHORT).show()
-            }
-        }, mBackgroundHandler)
+                override fun onConfigureFailed(session: CameraCaptureSession?) {
+                    Toast.makeText(mContext, "onConfigureFailed", Toast.LENGTH_SHORT).show()
+                }
+            }, mBackgroundHandler)
+        } catch (e: Exception) {
+            Log.d("test", e.toString())
+        }
     }
 
     /**

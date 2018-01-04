@@ -38,7 +38,9 @@
             android:name=".kotlin.ActivityKotlinTest"
             android:theme="@style/AppNoActionBar" />
         <activity android:name=".svg.ActivitySvg" />
-        <activity android:name=".shortvideo.ActivityShortVideo" />
+        <activity
+            android:name=".shortvideo.ActivityShortVideo"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
