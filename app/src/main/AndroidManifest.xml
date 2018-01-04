@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -35,12 +37,8 @@
         <activity
             android:name=".kotlin.ActivityKotlinTest"
             android:theme="@style/AppNoActionBar" />
-        <activity
-            android:name=".kotlin.ScrollingActivity"
-            android:label="@string/title_activity_scrolling"
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".svg.ActivitySvg" />
-        <activity android:name=".shortvideo.ActivityShortVideo"></activity>
+        <activity android:name=".shortvideo.ActivityShortVideo" />
     </application>
 
 </manifest>

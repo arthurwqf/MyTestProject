@@ -6,8 +6,8 @@
     android:orientation="vertical"
     tools:context="com.qingfeng.mytest.shortvideo.ActivityShortVideo">
 
-    <SurfaceView
-        android:id="@+id/surface_view"
+    <com.qingfeng.mytest.shortvideo.AutoFitTextureView
+        android:id="@+id/texture_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
