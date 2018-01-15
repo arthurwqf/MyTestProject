@@ -70,7 +70,7 @@ class ActivityShortVideo : AppCompatActivity(), View.OnClickListener {
     private lateinit var mContext: Context
     private var mCameraDevice: CameraDevice? = null
     private var mPreviewSession: CameraCaptureSession? = null
-    //camera preview 的size
+    //预览的size
     private var mPreviewSize: Size? = null
     //视频的size
     private var mVideoSize: Size? = null
@@ -129,7 +129,6 @@ class ActivityShortVideo : AppCompatActivity(), View.OnClickListener {
             mCameraOpenCloseLock.release()
             camera?.close()
             mCameraDevice = null
-            Log.d("test", "on state call back error" + error)
         }
 
     }

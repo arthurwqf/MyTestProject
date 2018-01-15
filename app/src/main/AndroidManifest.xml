@@ -41,6 +41,7 @@
         <activity
             android:name=".shortvideo.ActivityShortVideo"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".synctest.ActivitySyncTest"></activity>
     </application>
 
 </manifest>

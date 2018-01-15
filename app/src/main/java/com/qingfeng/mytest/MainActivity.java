@@ -12,6 +12,7 @@ import com.qingfeng.mytest.panorama.ActivityPanorama;
 import com.qingfeng.mytest.shortvideo.ActivityShortVideo;
 import com.qingfeng.mytest.step.ActivityStep;
 import com.qingfeng.mytest.svg.ActivitySvg;
+import com.qingfeng.mytest.synctest.ActivitySyncTest;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private Context mContext;
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.btn6).setOnClickListener(this);
         findViewById(R.id.btn7).setOnClickListener(this);
         findViewById(R.id.btn8).setOnClickListener(this);
+        findViewById(R.id.btn9).setOnClickListener(this);
     }
 
 
@@ -60,6 +62,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn8:
                 startAc(ActivityShortVideo.class);
+                break;
+            case R.id.btn9:
+                startAc(ActivitySyncTest.class);
                 break;
         }
     }

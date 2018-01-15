@@ -13,8 +13,7 @@ import java.util.Arrays;
  */
 
 public class Test extends AppCompatActivity {
-    private final static String[] VIDEOPER = new String[]{
-            Manifest.permission.CAMERA,
-            Manifest.permission.RECORD_AUDIO
-    };
+    private void test(){
+        new Thread().start();
+    }
 }

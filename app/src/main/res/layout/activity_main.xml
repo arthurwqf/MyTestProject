@@ -11,6 +11,11 @@
         android:orientation="vertical"
         android:padding="8dp"
         tools:context="com.qingfeng.mytest.MainActivity">
+        <Button
+            android:id="@+id/btn9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="thread" />
 
         <Button
             android:id="@+id/btn8"
