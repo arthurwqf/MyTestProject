@@ -15,5 +15,6 @@ import java.util.Arrays;
 public class Test extends AppCompatActivity {
     private void test(){
         new Thread().start();
+        Float.parseFloat("123");
     }
 }

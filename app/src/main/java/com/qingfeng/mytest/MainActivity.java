@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.qingfeng.mytest.NoteCalendar.ActivityNoteCalendar;
 import com.qingfeng.mytest.jni.ActivityJniTest;
 import com.qingfeng.mytest.kotlin.ActivityKotlinTest;
 import com.qingfeng.mytest.panorama.ActivityPanorama;
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.btn7).setOnClickListener(this);
         findViewById(R.id.btn8).setOnClickListener(this);
         findViewById(R.id.btn9).setOnClickListener(this);
+        findViewById(R.id.btn10).setOnClickListener(this);
     }
 
 
@@ -65,6 +67,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn9:
                 startAc(ActivitySyncTest.class);
+                break;
+            case R.id.btn10:
+                startAc(ActivityNoteCalendar.class);
                 break;
         }
     }

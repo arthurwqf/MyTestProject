@@ -13,7 +13,7 @@ public class ActivityJniTest extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jni_test);
 
-        TextView textView = (TextView) findViewById(R.id.tv);
+        TextView textView = findViewById(R.id.tv);
         textView.setText(JniMethod.getHello());
     }
 }

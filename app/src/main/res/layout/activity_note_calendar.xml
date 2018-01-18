@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    tools:context="com.qingfeng.mytest.NoteCalendar.ActivityNoteCalendar">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg"
+        android:orientation="vertical">
+
+        <com.qingfeng.mytest.NoteCalendar.weiget.CalendarView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:choose_color="#af45ce"/>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <com.qingfeng.mytest.widget.ShrinkLayout
+            android:id="@+id/shrink_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            app:shrink_bg_color="#55f3ad"
+            app:shrink_final_height="50dp"
+            app:shrink_final_radius="25dp"
+            app:shrink_final_width="200dp"
+            app:shrink_init_height="50dp"
+            app:shrink_init_radius="25dp"
+            app:shrink_init_width="50dp">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@mipmap/ic_launcher" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:text="哈哈哈哈...." />
+        </com.qingfeng.mytest.widget.ShrinkLayout>
+
+        <EditText
+            android:id="@+id/et_scale"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="doShrink"
+            android:text="do" />
+    </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

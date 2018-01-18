@@ -6,6 +6,9 @@ import android.os.Bundle;
 import com.qingfeng.mytest.R;
 import com.zph.glpanorama.GLPanorama;
 
+/**
+ * 全景图片
+ */
 public class ActivityPanorama extends AppCompatActivity {
 
     @Override
