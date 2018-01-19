@@ -179,12 +179,12 @@ class ActivityShortVideo : AppCompatActivity(), View.OnClickListener {
                 AlertDialog.Builder(this)
                         .setTitle("提示")
                         .setMessage("需要请求相机权限！")
-                        .setPositiveButton("确定", { dialog, which ->
+                        .setPositiveButton("确定", { _, _ ->
                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                                 requestPermissions(arrayOf(Manifest.permission.CAMERA), 0)
                             }
                         })
-                        .setNegativeButton("取消", { dialog, which ->
+                        .setNegativeButton("取消", { _, _ ->
                             this@ActivityShortVideo.finish()
                         })
                         .create()
@@ -471,10 +471,10 @@ class ActivityShortVideo : AppCompatActivity(), View.OnClickListener {
             var parent = parentFragment
             return AlertDialog.Builder(activity)
                     .setMessage("需要请求权限")
-                    .setPositiveButton("确定") { dialog, which ->
+                    .setPositiveButton("确定") { _, _ ->
                         ActivityCompat.requestPermissions(parent.activity, VIDEO_PERMISSIONS, 1)
                     }
-                    .setNegativeButton("取消") { dialog, which ->
+                    .setNegativeButton("取消") { _, _ ->
                         parent.activity.finish()
                     }
                     .create()
