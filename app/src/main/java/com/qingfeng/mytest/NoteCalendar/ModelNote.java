@@ -1,12 +1,19 @@
 package com.qingfeng.mytest.NoteCalendar;
 
+import android.databinding.BaseObservable;
+import android.databinding.Bindable;
+
+import com.qingfeng.mytest.BR;
+
 /**
  * Created by WangQF on 2018/1/18 0018.
  */
 
-public class ModelNote {
+public class ModelNote extends BaseObservable{
     int id;
-    int weather_icon;
+    int year;
+    int month;
+    int day;
     String weather;
     String content;
 
@@ -18,20 +25,44 @@ public class ModelNote {
         this.id = id;
     }
 
-    public int getWeather_icon() {
-        return weather_icon;
+    @Bindable
+    public int getYear() {
+        return year;
     }
 
-    public void setWeather_icon(int weather_icon) {
-        this.weather_icon = weather_icon;
+    public void setYear(int year) {
+        this.year = year;
+        notifyPropertyChanged(BR.year);
     }
 
+    @Bindable
+    public int getMonth() {
+        return month;
+    }
+
+    public void setMonth(int month) {
+        this.month = month;
+        notifyPropertyChanged(BR.month);
+    }
+
+    @Bindable
+    public int getDay() {
+        return day;
+    }
+
+    public void setDay(int day) {
+        this.day = day;
+        notifyPropertyChanged(BR.day);
+    }
+
+    @Bindable
     public String getWeather() {
         return weather;
     }
 
     public void setWeather(String weather) {
         this.weather = weather;
+        notifyPropertyChanged(BR.weather);
     }
 
     public String getContent() {

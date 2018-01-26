@@ -71,6 +71,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn10:
                 startAc(ActivityNoteCalendar.class);
                 break;
+            case R.id.btn11:
+                startAc(ActivityDpPx.class);
+                break;
         }
     }
 

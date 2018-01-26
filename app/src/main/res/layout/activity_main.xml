@@ -13,6 +13,12 @@
         tools:context="com.qingfeng.mytest.MainActivity">
 
         <Button
+            android:id="@+id/btn11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="dp px" />
+
+        <Button
             android:id="@+id/btn10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -42,7 +42,8 @@
             android:name=".shortvideo.ActivityShortVideo"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".synctest.ActivitySyncTest" />
-        <activity android:name=".NoteCalendar.ActivityNoteCalendar"></activity>
+        <activity android:name=".NoteCalendar.ActivityNoteCalendar" />
+        <activity android:name=".ActivityDpPx"></activity>
     </application>
 
 </manifest>

@@ -16,15 +16,7 @@ import java.util.Arrays;
 
 public class Test extends AppCompatActivity {
     private void test(){
-        new Thread().start();
-        Float.parseFloat("123");
-
-        TextView textView = new TextView(this);
-        textView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
+        String a = "1";
+        float k = Float.parseFloat(a);
     }
 }

@@ -51,4 +51,13 @@
         <attr name="shrink_bg_color" format="color" />
     </declare-styleable>
 
+    <declare-styleable name="FreeStyleLinearLayout">
+        <attr name="corner_radius" format="dimension" />
+        <attr name="top_left_radius" format="dimension" />
+        <attr name="top_tight_radius" format="dimension" />
+        <attr name="bottom_left_radius" format="dimension" />
+        <attr name="bottom_right_radius" format="dimension" />
+        <attr name="bg_color" format="color" />
+    </declare-styleable>
+
 </resources>
