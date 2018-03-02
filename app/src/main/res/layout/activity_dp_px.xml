@@ -59,7 +59,7 @@
             android:id="@+id/et_px2"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:inputType="none" />
+            android:inputType="number" />
 
         <Button
             android:id="@+id/btn2"
@@ -80,5 +80,81 @@
             android:inputType="none" />
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:orientation="horizontal">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="px:"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/et_px3"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:inputType="number" />
+
+        <Button
+            android:id="@+id/btn3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="to" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="sp:"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/et_sp"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:inputType="none" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0x" />
+
+        <EditText
+            android:id="@+id/et16"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=">>" />
+
+        <EditText
+            android:id="@+id/etRightMove"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:inputType="number" />
+
+        <Button
+            android:id="@+id/btn_change"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="=" />
+
+        <TextView
+            android:id="@+id/tv_result"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2" />
+    </LinearLayout>
 </LinearLayout>

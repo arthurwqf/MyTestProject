@@ -38,7 +38,6 @@ class ActivityNoteCalendar : AppCompatActivity() {
             }
             calView.showSelectLayout(mYear)
             tv_lunar.visibility = View.GONE
-            tv_year.visibility = View.GONE
             tv_month_day.text = "$mYear"
         })
 
@@ -47,10 +46,8 @@ class ActivityNoteCalendar : AppCompatActivity() {
         })
 
         calView.setOnDateSelectedListener({ calendar, isClick ->
-            tv_year.visibility = View.VISIBLE
             tv_lunar.visibility = View.VISIBLE
             tv_month_day.text = "${calendar.month}月${calendar.day}日"
-            tv_year.text = "${calendar.year}"
             tv_lunar.text = calendar.lunar
             mYear = calendar.year
         })

@@ -16,7 +16,7 @@ import java.util.Arrays;
 
 public class Test extends AppCompatActivity {
     private void test(){
-        String a = "1";
-        float k = Float.parseFloat(a);
+       long a = 123;
+       long x = a>>24;
     }
 }
